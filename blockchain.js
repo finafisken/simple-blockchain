@@ -1,23 +1,24 @@
-const Block = require('./block.js');
+const Block = require("./block.js");
 
 class Blockchain {
-  constructor(){
+  constructor() {
     const timestamp = Date.now();
-    const genesisBlock = new Block(timestamp, { genesis: 'block' });
+    const genesisBlock = new Block(timestamp, { genesis: "block" });
     this.chain = [genesisBlock];
+    this.difficulty = 4;
   }
 
   addBlock(block) {
     const latestBlock = this.chain[this.chain.length - 1];
     block.previousHash = latestBlock.hash;
-    block.hash = block.calculateHash();
+    block.mineBlock(this.difficulty);
     this.chain.push(block);
   }
 
-  isValid(){
-    for(let i = 1; i < this.chain.length; i++) {
+  isValid() {
+    for (let i = 1; i < this.chain.length; i++) {
       const block = this.chain[i];
-      const prev = this.chain[i-1];
+      const prev = this.chain[i - 1];
       if (block.hash !== block.calculateHash()) {
         return false;
       }
