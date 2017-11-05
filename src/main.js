@@ -1,7 +1,7 @@
 const Block = require("./block.js");
 const Blockchain = require("./blockchain.js");
 
-const myBlockchain = new Blockchain();
+const myBlockchain = new Blockchain(4);
 
 console.log("Mining block 1...");
 myBlockchain.addBlock(new Block(Date.now(), { data: "payload2" }));

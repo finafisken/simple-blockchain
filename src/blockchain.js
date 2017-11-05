@@ -1,11 +1,10 @@
 const Block = require("./block.js");
 
 class Blockchain {
-  constructor() {
-    const timestamp = Date.now();
-    const genesisBlock = new Block(timestamp, { genesis: "block" });
-    this.chain = [genesisBlock];
-    this.difficulty = 4;
+  constructor(difficulty, genesisBlock) {
+    const gBlock = genesisBlock || new Block(Date.now(), { genesis: "block" });
+    this.chain = [gBlock];
+    this.difficulty = difficulty;
   }
 
   addBlock(block) {

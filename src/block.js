@@ -5,23 +5,23 @@ class Block {
     this.timestamp = timestamp;
     this.previousHash = previousHash;
     this.payload = payload;
-    this.hash = this.calculateHash();
     this.nonce = 0;
+    this.hash = this.calculateHash();
   }
 
   calculateHash() {
     return SHA256(
       this.timestamp +
-        this.nonce +
-        JSON.stringify(this.payload) +
-        this.previousHash
+      this.nonce +
+      JSON.stringify(this.payload) +
+      this.previousHash
     );
   }
 
   /*
   * As a proof of work we require the hash of the to block to start with 
   * (difficulty) amount of zeros before we allow it to be added to the chain.
-  * The nonce value will ensure that the hash produces different results each
+  * The nonce value will ensure that the hash produces a different result each
   * attempted guess.
   */
   mineBlock(difficulty) {
