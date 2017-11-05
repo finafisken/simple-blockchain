@@ -1,9 +1,9 @@
 # simple-blockchain
-Simple implementation of blockchain for learning purposes. 
+Simple implementation of the blockchain concept for learning purposes. 
 
-__This is should not be considered a safe implementation__
+__This should not be considered a safe implementation__
 
 ## Commands
 
  * `npm start` - instanciates the blockchain
- * `npm test` - runs tests
+ * `npm test` - run tests
